@@ -9,11 +9,11 @@ import org.aeonbits.owner.Config;
 })
 
 public interface AuthConfig extends Config {
-    @DefaultValue("kirill_IcK4CD")
+
     @Key("browserstack.user")
     String userName();
 
-    @DefaultValue("9cPqaW6bZsssNwmWwYJH")
+
     @Key("browserstack.key")
     String userKey();
 }
