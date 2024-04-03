@@ -13,15 +13,12 @@ public interface DriverConfig extends Config {
     @Key("remote.url")
     String remoteUrl();
 
-    @DefaultValue("Huawei P30")
     @Key("device")
     String deviceName();
 
-    @DefaultValue("9.0")
     @Key("version")
     String versionDevice();
 
-    @DefaultValue("Selenide")
     @Key("search.data")
     String searchData();
 
