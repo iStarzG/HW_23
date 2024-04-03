@@ -8,8 +8,6 @@ import org.aeonbits.owner.Config;
         "classpath:config/driverBrowserStack.properties"})
 
 public interface DriverConfig extends Config {
-    @Key("is.remote")
-    Boolean isRemote();
 
     @DefaultValue("https://hub.browserstack.com/wd/hub")
     @Key("remote.url")
