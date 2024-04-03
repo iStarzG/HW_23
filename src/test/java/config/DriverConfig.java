@@ -13,10 +13,10 @@ public interface DriverConfig extends Config {
     @Key("remote.url")
     String remoteUrl();
 
-    @Key("device")
+    @Key("device.name")
     String deviceName();
 
-    @Key("version")
+    @Key("version.device")
     String versionDevice();
 
     @Key("search.data")
