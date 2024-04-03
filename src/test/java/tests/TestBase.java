@@ -19,13 +19,12 @@ public class TestBase {
         Configuration.browser = BrowserStackDriver.class.getName();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
-        open();
     }
 
     @BeforeEach
     void beforeEach() {
-        open();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        open();
     }
 
     @AfterEach
