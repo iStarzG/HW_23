@@ -17,9 +17,9 @@ public class BrowserStackDriver implements WebDriverProvider {
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
-        MutableCapabilities caps = new MutableCapabilities();
         AuthConfig authConfig = ConfigFactory.create(AuthConfig.class, System.getProperties());
         DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class, System.getProperties());
+        MutableCapabilities caps = new MutableCapabilities();
 
         // Set your access credentials
         caps.setCapability("browserstack.user", authConfig.userName());
