@@ -9,17 +9,23 @@ import org.aeonbits.owner.ConfigFactory;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Selenide.*;
-import static io.appium.java_client.AppiumBy.accessibilityId;
-import static io.appium.java_client.AppiumBy.id;
+import static io.appium.java_client.AppiumBy.*;
 
 public class SearchMobilePages {
     DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class, System.getProperties());
     private SelenideElement
+            clickButtonSkip = $(id("org.wikipedia:id/fragment_onboarding_skip_button")),
             clickSearchWiki = $(accessibilityId("Search Wikipedia")),
-            searchWikiTable = $(id("org.wikipedia.alpha:id/search_src_text")),
-            errorPage = $(id("org.wikipedia.alpha:id/view_wiki_error_text"));
+            searchWikiTable = $(id("org.wikipedia:id/search_src_text")),
+            resultPage = $(className("android.widget.TextView"));
     private ElementsCollection
-            resultListPage = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
+            resultListPage = $$(id("org.wikipedia:id/page_list_item_title"));
+
+    @Step("Нажатие на кнопку Skip")
+    public SearchMobilePages clickSkipButton() {
+        clickButtonSkip.click();
+        return this;
+    }
 
     @Step("Нажатие на поисковую строку")
     public SearchMobilePages clickSearchTable() {
@@ -51,9 +57,9 @@ public class SearchMobilePages {
         return this;
     }
 
-    @Step("Проверка ошибки An error occurred")
-    public SearchMobilePages checkOpenPageError() {
-        errorPage.shouldHave(Condition.text("An error occurred"));
+    @Step("Проверка открытия страницы с нужным содержанием")
+    public SearchMobilePages checkResultPage() {
+        resultPage.shouldHave(Condition.text(driverConfig.searchData()));
         return this;
 
     }

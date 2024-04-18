@@ -15,7 +15,8 @@ public class SearchMobileTest extends TestBase {
     @Test
     void successfulSearchTest() {
         step("Type search", () -> {
-            mobilePages.clickSearchTable()
+            mobilePages.clickSkipButton()
+                    .clickSearchTable()
                     .appiumSearchWiki();
         });
         step("Verify content found", () ->
@@ -23,16 +24,17 @@ public class SearchMobileTest extends TestBase {
     }
 
     @Owner("iStarzG")
-    @DisplayName("Checking the error results")
+    @DisplayName("Checking that a page opens with the required content")
     @Test
-    void searchResultError() {
+    void searchEnteredValue() {
         step("Type search", () -> {
-            mobilePages.clickSearchTable()
+            mobilePages.clickSkipButton()
+                    .clickSearchTable()
                     .setSearchData()
                     .clickFirstResult();
         });
-        step("Verify content an error occurred", () ->
-                mobilePages.checkOpenPageError());
+        step("Verify content", () ->
+                mobilePages.checkResultPage());
     }
 }
 
